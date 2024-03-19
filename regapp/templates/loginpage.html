@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+           
+            background-image: url('https://www.shutterstock.com/image-vector/blue-grid-mosaic-background-creative-260nw-485238175.jpg'); 
+            background-repeat:no-repeat;
+            background-size: cover;
+           
+           
+        }
+        #a1{
+            margin-left:20px;
+            font-size: 20px;
+            color:white;
+            text-decoration: none;
+        }
+        
+        fieldset {
+            height: fit-content;
+            width: fit-content;
+            border-radius: 10px;
+            background-color: #a6daee; /* Light gray background */
+            padding: 20px;
+            margin-top : 150px;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border:none;
+        }
+
+        input[type="submit"] {
+            height:40px;
+            width:100px;
+            background-color: #3e3e3e; /* Dark gray button background color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left:0px;
+            color: beige;
+        }
+        
+        a{
+            color: black;
+            text-decoration: none;
+            /* font-size:10px; */
+
+        }
+        .toolbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: #0b7dda;
+            color: rgba(179, 35, 35, 0.767);
+            font-weight: 600;
+            color:white;
+        }
+
+    </style>
+     <div class="toolbar" role="banner">
+          <div class="spacer"></div>
+          <a href="http://127.0.0.1:8000/main/home/" title="Home" id="a1">
+            Home   
+          </a>
+        
+      </div>
+</head>
+<body>
+    <center>
+        <fieldset>
+            <h3>Login Form</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {% if messages %}
+                    <ul class="messages">
+                       {% for message in messages %}
+                           <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+                       {%endfor%}
+                    </ul>
+                {% endif %}
+                <h2>{{message}}</h2>
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" value="Login">
+                <br><br>
+                <a href="http://127.0.0.1:8000/main/register/">&lt; If you are not registered, register here &gt;</a>
+            </form>
+        </fieldset>
+    </center>
+</body>
+</html>

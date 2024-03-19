@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'nav_base_pages/base.html' %} 
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+
+        td{
+            height:40px;
+        }
+    
+
+        #blog {
+            
+            background-image: url('C:\Users\tgorla\Desktop\boy_img.jpg'); 
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            border: none;
+            height:700px;
+            text-align:left;
+            width:100%
+        }
+
+        
+        img {
+            border-radius: 100%;
+            text-align:left;
+            height: 150px;
+            width: 150px;
+        }
+
+        button {
+            height: 40px;
+            width: 120px;
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: rgb(35, 147, 238);; /* Blue button background */
+            color: white;
+            border:none;
+        }
+
+        
+        input[type="text"]{
+            border: 2px solid black;
+            border-radius: 5px;
+            width:200px;
+            height:40px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            height: 40px;
+            width: 120px;
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: rgb(35, 147, 238);; /* Blue button background */
+            color: rgb(247, 242, 242);
+            border: none;
+            margin-top:30px;
+
+        }
+
+      
+
+        .left {
+            float: left;
+            /* margin-left: 40px; */
+            margin-top: 20px;
+            position:initial;
+            width:50%;
+        }
+
+        .right {
+            float: right;
+            margin-top: 20px;
+             /* margin-left: 40px; */
+            /* margin-right: 50px; */
+            /* position:absolute; */
+            width:45%;
+        }
+        label{
+            margin-bottom: 10px;
+
+        }
+
+        textarea{
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            border: 2px solid black;
+            height: 130px;
+            width:400px;
+        }
+
+       
+     
+
+        .table {
+
+            width: 80%;
+
+            margin: 0 auto;
+
+            border-collapse: collapse;
+
+            background-color: #fff;
+
+ 
+
+        }
+
+ 
+
+        .th, .td {
+            border: 1px solid #ddd;
+
+            padding: 12px;
+
+            text-align: left;
+
+        }
+
+ 
+
+        .th {
+
+            background-color:rgb(35, 147, 238);;
+
+            color: #fff;
+
+        }
+
+ 
+        .tr:nth-child(even) {
+
+            background-color: #f2f2f2;
+
+        }
+
+        #blog_content{
+            float:left;
+            margin-left:20px;
+            margin-top:10px;    
+        }
+
+        /* #fieldset{
+            position: inherit;
+        } */
+        .p{
+            white-space:normal;
+            text-overflow: ellipsis;
+            /* width:200px; */
+            overflow:hidden;
+
+        }
+
+    </style>
+</head>
+<body>
+        
+    <div id="blog">
+
+        <div class="left">
+            <img src="{{ user_details.image.url }}">
+            <br>
+
+            <a href="{{ image_link }}" style="margin-left:13px;"><button>EDIT IMAGE</button></a>
+      
+            <table style="margin-top:40px;margin-bottom:30px; width:100%; ">
+           
+                           <tr>
+           
+                               <th class="th">Name</th>
+           
+                               <th class="th">Email</th>
+           
+                               <th class="th">Mobile</th>
+           
+                               <th class="th">Qualifications</th>
+           
+                           </tr>
+           
+                           <tr class="tr">
+           
+                               <td>{{ user_details.name }}</td>
+           
+                               <td>{{ user_details.email }}</td>
+           
+                               <td>{{ user_details.phone_number }}</td>
+           
+                               <td>{{ user_details.qualifications }}</td>
+           
+                           </tr>
+           
+                       </table>
+           
+        
+                       
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                <table>
+                    {{ blogform.as_table}}
+                </table>
+
+                    <input type="submit" value="Post">
+                </form>
+            </div>
+
+        </div>
+         
+        <div class="right">
+
+            {% for blog in blog_data %}
+            
+            {%if blog.status%}
+
+            <div style="background-color: white; width:300px;" id="fieldset">
+                
+                <small>{{blog.posted_at}}</small>
+
+                <hr>
+
+                <h2 class="text-justify">{{blog.blog_title}}</h2>
+
+                <p class="p">{{blog.blog_content}}</p>
+
+                <br>  
+
+                <button type="submit">
+                    <a href="{% url 'update_post' blog.id %}"  style="text-decoration: none; color:white;">EDIT</a>
+                </button> 
+                
+                <button type="submit">
+                    <a href="{% url 'delete_post' blog.id %}" style="text-decoration: none; color:white;">DELETE</a>
+                </button>  
+                
+            </div>
+            {%endif%}
+
+            {%endfor%}
+
+        </div>
+
+
+    </div>
+
+
+</body>
+{% endblock %}
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            background-color: #f0daea; /* Light purple background */
+            font-family: Arial;
+           
+        }
+        
+        
+        fieldset {
+            height: 260px;
+            width: 390px;
+            border-radius: 10px;
+            background-color: #7e7c76; /* Light gray background */
+            padding: 20px;
+            margin-top : 150px;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border:none;
+        }
+
+        input[type="submit"] {
+            height:40px;
+            width:100px;
+            background-color: #3e3e3e; /* Dark gray button background color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left:0px;
+            color: beige;
+        }
+        
+        a{
+            color: black;
+
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+        <fieldset>
+            <h3>Login Form</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" value="Login">
+                <br><br>
+                <a href="http://127.0.0.1:8000/main/admin_registration/">&lt; If you are not registered, register here &gt;</a>
+            </form>
+        </fieldset>
+    </center>
+</body>
+</html>

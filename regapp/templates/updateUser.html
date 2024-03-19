@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'nav_base_pages/base_update_forms.html' %} 
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <style>
+        body {
+           
+           background-image: url('https://www.shutterstock.com/image-vector/blue-grid-mosaic-background-creative-260nw-485238175.jpg'); 
+           background-repeat:no-repeat;
+           background-size: cover;
+          
+          
+       }
+
+        input[type="file"],
+        input[type="text"]{
+            width:300px;
+            height:50px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 4px;
+
+         }
+
+        input[type="password"] {
+            height:20px;
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 4px;
+        }
+
+        label{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        input[type="submit"] {
+            background-color: #3e3e3e; /* Dark gray button background color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }   
+
+    </style>
+<body>
+<center>
+    
+    <form method="post" enctype="multipart/form-data">
+        
+        {% csrf_token%}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+            {%endfor%}
+        </ul>
+      {% endif %}
+        <br>
+        <table>
+
+        {{user_form.as_table}}
+
+        {{pswrd_form.as_table}}
+
+        {{image_form.as_table}}
+
+        </table>
+
+        <input type="submit" value="submit">
+    </form>
+</center>   
+    
+</body>
+{% endblock %}
+</html>

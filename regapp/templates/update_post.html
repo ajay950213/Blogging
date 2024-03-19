@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Update Post</title>
+
+    <style>
+    
+        input[type="text"]{
+              border: 2px solid black;
+              border-radius: 5px;
+              width:200px;
+              height:40px;
+              font-size: 15px;
+              font-weight: bold;
+          }
+  
+          input[type="submit"] {
+              height: 40px;
+              width: 120px;
+              border-radius: 10px;
+              font-weight: bold;
+              background-color: rgb(101, 101, 160); /* Blue button background */
+              color: rgb(247, 242, 242);
+              border: none;
+              margin-top:30px;
+  
+          }
+  
+         
+          label{
+              margin-bottom: 10px;
+  
+          }
+          textarea{
+              border-radius: 5px;
+              font-size: 15px;
+              font-weight: bold;
+              border: 2px solid black;
+              height: 130px;
+              width:400px;
+          }
+
+          body{
+            background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2F3d-digital-render-cute-boy-reading-book-isolated-white-background_1057-19650.jpg&tbnid=GufgzRYixkMrSM&vet=12ahUKEwjA08fB29mBAxUib2wGHd7CDXIQMygFegQIARBX..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Fpremium-ai-image%2F3d-digital-render-cute-boy-reading-book-isolated-white-background_64262745.htm&docid=D0AoAcuAmHZ1tM&w=626&h=626&q=reading%20book%20boy%203d%20images%20for%20my%20application%20background&ved=2ahUKEwjA08fB29mBAxUib2wGHd7CDXIQMygFegQIARBX'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+          }
+  </style>
+</head>
+
+<body>
+    <center>
+    <div class="right" style="margin-top:60px;">
+        <form method="post">
+            {% csrf_token %}
+        <table>
+            {{ form.as_table}}
+        </table>
+
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</center>
+</body>
+
+</html>
+{% endblock %}

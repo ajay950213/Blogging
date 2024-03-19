@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Login</button>
+                <a href="http://127.0.0.1:8000/main/register/">
+                If not registered click here
+                </a>
+                <br>
+                <br>
+                <button type="submit">
+                    <a href="http://127.0.0.1:8000/main/update_password/">
+                    update password
+                    </a></button>
+        </form>
+        
+    </body>

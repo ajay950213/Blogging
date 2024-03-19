@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3d4b5f;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .input{
+            height:40px;
+            width:80px;
+            background-color: #aaa8a8; /* Dark gray button background color */
+            color:rgb(186, 37, 37);
+            border: none;
+            border-radius: 4px;
+            margin-left:0px;
+            color: white;
+        }
+   
+        fieldset{
+            margin-left: 50px;
+            margin-top:20px ;
+            height:fit-content;
+            width:500px;
+            border:none;
+            background-color: #dce2eb;
+            font-size: 20px;
+            border-radius: 5px ;
+
+        }
+        .toolbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: #0b7dda;
+            color: rgba(179, 35, 35, 0.767);
+            font-weight: 600;
+            color:white;
+        }
+
+        a{
+            margin-left:10px;
+            text-decoration: none;
+            padding:5px;
+            color:white;
+            font-size:20px; 
+        }
+    </style>
+    <div class="toolbar" role="banner">
+       
+
+          <div class="spacer"></div>
+          <a href="http://127.0.0.1:8000/main/home/" title="Home">
+            Home   
+          </a>
+          <br>
+          <a href="http://127.0.0.1:8000/main/admin_login/" title="back">Back
+          </a>
+          <br>
+          <a href="http://127.0.0.1:8000/main/login/">Logout</a>    
+      </div>
+</head>
+<body>
+    
+
+
+    <h1 style="margin-left:50px; margin-top: 100px;">Blogs</h1>
+
+    {% for i in all_blogs %}
+    <fieldset>
+
+        <strong>Title : </strong>{{ i.blog_title }}<br>
+        <strong>content : </strong>{{ i.blog_content }}<br><br>
+        
+    </fieldset>
+    {% endfor %}
+
+</body>
+</html>
